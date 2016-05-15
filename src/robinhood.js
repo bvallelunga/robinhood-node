@@ -78,6 +78,7 @@ function RobinhoodWebApi(opts, callback) {
       json: true,
       gzip: true
     });
+    api.request = _request;
   }
 
   function _login(callback){
@@ -107,7 +108,6 @@ function RobinhoodWebApi(opts, callback) {
    * +--------------------------------+ */
   api.request = _request;
   api.endpoints = _endpoints;
-  api.login = _login;
   
   api.investment_profile = function(callback){
     return _request.get({
