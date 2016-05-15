@@ -107,6 +107,8 @@ function RobinhoodWebApi(opts, callback) {
    * +--------------------------------+ */
   api.request = _request;
   api.endpoints = _endpoints;
+  api.login = _login;
+  
   api.investment_profile = function(callback){
     return _request.get({
         uri: _endpoints.investment_profile
