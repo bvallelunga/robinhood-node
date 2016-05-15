@@ -98,8 +98,11 @@ function RobinhoodWebApi(opts, callback) {
       _private.headers.Authorization = 'Token ' + _private.auth_token;
 
       _setHeaders();
-
-      callback.call();
+			
+			api.accounts(function(e,r,body) {
+				_private.account = body.results[0].url;
+				callback.call();
+			})
     });
   }
 
@@ -152,7 +155,7 @@ function RobinhoodWebApi(opts, callback) {
       uri: _endpoints.orders
     }, callback);
   };
-  var _place_order = function(options, callback){
+  var _place_order = function(options, callback){	  
     return _request.post({
         uri: _endpoints.orders,
         form: {
